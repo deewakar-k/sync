@@ -10,7 +10,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function TimeSlotSettings({ data, setData }) {
+interface TimeSlotData {
+  defaultDuration: number;
+  serviceSpecific: Record<string, number>;
+}
+
+interface TimeSlotSettingsProps {
+  data: TimeSlotData;
+  setData: React.Dispatch<React.SetStateAction<TimeSlotData>>;
+}
+
+export function TimeSlotSettings({ data, setData }: TimeSlotSettingsProps) {
   const [newService, setNewService] = useState({ name: "", duration: "" });
 
   const handleDefaultDurationChange = (duration: string) => {

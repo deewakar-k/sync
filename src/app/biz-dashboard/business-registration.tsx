@@ -8,16 +8,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+interface BusinessData {
+  type: string;
+  name: string;
+  address: string;
+}
+
 interface BusinessRegistrationProps {
-  data: Record<string, string>;
-  setData: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  data: BusinessData;
+  setData: React.Dispatch<React.SetStateAction<BusinessData>>;
 }
 
 export function BusinessRegistration({
   data,
   setData,
 }: BusinessRegistrationProps) {
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: keyof BusinessData, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
   };
 
